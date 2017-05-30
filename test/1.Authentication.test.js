@@ -1,10 +1,9 @@
 const expect = require('chai').expect;
 const CubedHost = require('../');
 
-let invalidUser = {
-	name: 'Invalid User',
-	email: 'invalid@user.com',
-	password: 'invalid'
+let user = {
+	email: 'admin+prisma@cubedhost.com',
+	password: 'dev'
 };
 
 describe('Authentication', function() {
@@ -12,11 +11,11 @@ describe('Authentication', function() {
 
 	describe('#login()', function() {
 
-		it('should return invalid login', function(done) {
-			CubedHost.Authentication.login(invalidUser)
+		it('should return valid login', function(done) {
+			CubedHost.Authentication.login(user)
 				.then(function(res) {
 					expect(res).to.be.an('object');
-					expect(res.body.success).to.equal(false);
+					expect(res.body.success).to.equal(true);
 					done();
 				}).catch(done);
 		});
