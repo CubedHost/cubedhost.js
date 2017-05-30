@@ -88,4 +88,15 @@ describe('Servers', function() {
 		});
 	});
 
+	describe('#getDatabase', function() {
+		it('should get null server database', function() {
+			return CubedHost.Servers.getDatabase(1)
+				.then(function(res) {
+					expect(res).to.be.an('object');
+					expect(res.status).to.equal(200);
+					expect(res.body).to.equal(null);
+				});
+		});
+	});
+
 });
