@@ -77,4 +77,15 @@ describe('Servers', function() {
 		});
 	});
 
+	describe('#getSchedules', function() {
+		it('should return a list of schedules', function() {
+			return CubedHost.Servers.getSchedules(1)
+				.then(function(res) {
+					expect(res).to.be.an('object');
+					expect(res.status).to.equal(200);
+					expect(res.body).to.be.an('array');
+				});
+		});
+	});
+
 });
