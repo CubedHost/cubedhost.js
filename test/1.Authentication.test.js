@@ -15,6 +15,7 @@ describe('Authentication', function() {
 			CubedHost.Authentication.login(user)
 				.then(function(res) {
 					expect(res).to.be.an('object');
+					expect(res.status).to.equal(200);
 					expect(res.body.success).to.equal(true);
 					done();
 				}).catch(done);

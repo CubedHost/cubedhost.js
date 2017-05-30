@@ -4,7 +4,7 @@
   "description": "Node.js client for the CubedHost Prisma API",
   "main": "index.js",
   "scripts": {
-    "test": "CUBEDHOST_API=http://prisma.dev:3000 mocha"
+    "test": "NODE_ENV=test CUBEDHOST_API=http://prisma.dev:3000 mocha"
   },
   "repository": {
     "type": "git",
