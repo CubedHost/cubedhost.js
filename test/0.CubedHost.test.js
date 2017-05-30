@@ -8,6 +8,7 @@ describe('CubedHost', function() {
 		expect(client).to.be.an('object');
 		expect(client).to.have.property('Authentication');
 		expect(client).to.have.property('User');
+		expect(client).to.have.property('Servers');
 	});
 
 });

@@ -23,7 +23,8 @@ describe('User', function() {
 			return Prisma.User.getProfile().then(function(res) {
 				expect(res).to.be.an('object');
 				expect(res.status).to.equal(200);
-				expect(res.body).to.have.property('whmcs_customer').to.is.an('object');
+				let { body } = res;
+				expect(body).to.have.property('whmcs_customer').that.is.an('object');
 				let { whmcs_customer } =res.body;
 				expect(whmcs_customer).to.have.property('id').that.is.a('number');
 				expect(whmcs_customer).to.have.property('name').that.is.a('string');
