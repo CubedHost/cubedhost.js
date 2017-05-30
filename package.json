@@ -28,7 +28,6 @@
     "mocha": "^3.4.2"
   },
   "dependencies": {
-    "bluebird": "^3.5.0",
     "superagent": "^3.5.2"
   }
 }
