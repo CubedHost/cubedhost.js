@@ -11,14 +11,13 @@ describe('Authentication', function() {
 
 	describe('#login()', function() {
 
-		it('should return valid login', function(done) {
-			CubedHost.Authentication.login(user)
+		it('should return valid login', function() {
+			return CubedHost.Authentication.login(user)
 				.then(function(res) {
 					expect(res).to.be.an('object');
 					expect(res.status).to.equal(200);
 					expect(res.body.success).to.equal(true);
-					done();
-				}).catch(done);
+				});
 		});
 
 	});
