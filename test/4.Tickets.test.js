@@ -16,4 +16,18 @@ describe('Tickets', function() {
 			});
 	});
 
+	describe('#get()', function() {
+		it('should get a single ticket', function() {
+			return CubedHost.Tickets.get(53)
+				.then(function(res) {
+					expect(res).to.be.an('object');
+					expect(res.status).to.equal(200);
+					expect(res.body).to.have.property('result').that.equals('success');
+					expect(res.body).to.have.property('tid');
+					expect(res.body).to.have.property('c');
+					expect(res.body.ticketid).to.equal('53');
+				});
+			});
+	});
+
 });
