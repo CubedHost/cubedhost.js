@@ -66,4 +66,15 @@ describe('Servers', function() {
 		});
 	});
 
+	describe('#getPlayers', function() {
+		it('should return a list of players', function() {
+			return CubedHost.Servers.getPlayers(1)
+				.then(function(res) {
+					expect(res).to.be.an('object');
+					expect(res.status).to.equal(200);
+					expect(res.body).to.be.an('array');
+				});
+		});
+	});
+
 });
