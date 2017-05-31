@@ -5,7 +5,6 @@ describe('User', function() {
 	this.timeout(5000);
 
 	describe('#get()', function() {
-
 		it('should get user information', function() {
 			return Prisma.User.get().then(function(res) {
 				expect(res).to.be.an('object');
@@ -14,11 +13,9 @@ describe('User', function() {
 				expect(res.body).to.have.property('email').that.is.a('string');
 			});
 		});
-
 	});
 
 	describe('#getProfile()', function() {
-
 		it('should get profile information', function() {
 			return Prisma.User.getProfile().then(function(res) {
 				expect(res).to.be.an('object');
@@ -30,7 +27,17 @@ describe('User', function() {
 				expect(whmcs_customer).to.have.property('name').that.is.a('string');
 			});
 		});
+	});
 
+	describe('#updateProfile()', function() {
+		it('should update profile information', function() {
+			let user = { email: 'admin+prisma@cubedhost.com' };
+			let whmcs_customer = { id: 1 };
+			return Prisma.User.updateProfile({ user, whmcs_customer })
+				.then(function(res) {
+
+				});
+		});
 	});
 
 });
