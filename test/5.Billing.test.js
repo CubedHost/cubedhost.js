@@ -56,4 +56,17 @@ describe('Billing', function() {
 		});
 	});
 
+	describe('#getCustomer()', function() {
+		it('should get customer', function() {
+			return CubedHost.Billing.getCustomer()
+				.then(function(res) {
+					expect(res).to.be.an('object');
+					expect(res.body).to.be.an('object');
+					expect(res.body).to.have.property('id');
+					expect(res.body).to.have.property('firstName');
+					expect(res.body).to.have.property('company');
+				});
+		});
+	});
+
 });
