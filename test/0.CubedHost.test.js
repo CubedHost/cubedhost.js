@@ -10,6 +10,7 @@ describe('CubedHost', function() {
 		expect(client).to.have.property('User');
 		expect(client).to.have.property('Servers');
 		expect(client).to.have.property('Tickets');
+		expect(client).to.have.property('Billing');
 	});
 
 });
