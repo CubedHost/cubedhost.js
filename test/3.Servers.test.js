@@ -33,6 +33,17 @@ describe('Servers', function() {
 		});
 	});
 
+	describe('#settings()', function() {
+		it('should update the server settings', function() {
+			return CubedHost.Servers.settings(1, {})
+				.then(function(res) {
+					expect(res).to.be.an('object');
+					expect(res.status).to.equal(200);
+					expect(res.body.success).to.equal(true);
+				});
+		});
+	});
+
 	describe('#start()', function() {
 		it('should start the server', function() {
 			return CubedHost.Servers.start(1)
@@ -66,7 +77,7 @@ describe('Servers', function() {
 		});
 	});
 
-	describe('#getPlayers', function() {
+	describe('#getPlayers()', function() {
 		it('should return a list of players', function() {
 			return CubedHost.Servers.getPlayers(1)
 				.then(function(res) {
@@ -77,7 +88,7 @@ describe('Servers', function() {
 		});
 	});
 
-	describe('#getSchedules', function() {
+	describe('#getSchedules()', function() {
 		it('should return a list of schedules', function() {
 			return CubedHost.Servers.getSchedules(1)
 				.then(function(res) {
@@ -88,7 +99,7 @@ describe('Servers', function() {
 		});
 	});
 
-	describe('#getDatabase', function() {
+	describe('#getDatabase()', function() {
 		it('should get null server database', function() {
 			return CubedHost.Servers.getDatabase(1)
 				.then(function(res) {
