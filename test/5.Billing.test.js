@@ -30,7 +30,7 @@ describe('Billing', function() {
 		});
 	});
 
-	describe('#getServices()', function() {
+	describe.skip('#getServices()', function() {
 		it('should get services list', function() {
 			return CubedHost.Billing.getServices()
 				.then(function(res) {
@@ -43,7 +43,7 @@ describe('Billing', function() {
 		});
 	});
 
-	describe('#getService()', function() {
+	describe.skip('#getService()', function() {
 		it('should get single service', function() {
 			return CubedHost.Billing.getService(62)
 				.then(function(res) {
