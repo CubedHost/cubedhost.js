@@ -132,4 +132,22 @@ describe('Servers', function() {
 		});
 	});
 
+	describe.skip('#createSchedule()', function() {
+		it('should create a new schedule', function() {
+			// TODO: write test
+		});
+	});
+
+	describe.skip('#updateSchedule()', function() {
+		it('should update an existing schedule', function() {
+			// TODO: write test
+		});
+	});
+
+	describe.skip('#deleteSchedule()', function() {
+		it('should delete an existing schedule', function() {
+			// TODO: write test
+		});
+	});
+
 });
