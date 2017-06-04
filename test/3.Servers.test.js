@@ -44,6 +44,17 @@ describe('Servers', function() {
 		});
 	});
 
+	describe('#sendCommand()', function() {
+		it('should send command', function() {
+			return CubedHost.Servers.sendCommand(1, 'say Test')
+				.then(function(res) {
+					expect(res).to.be.an('object');
+					expect(res.status).to.equal(200);
+					expect(res.body.success).to.equal(true);
+				});
+		});
+	});
+
 	describe('#start()', function() {
 		it('should start the server', function() {
 			return CubedHost.Servers.start(1)
