@@ -111,13 +111,35 @@ describe('Servers', function() {
 		});
 	});
 
-	describe('#getDatabase()', function() {
+	describe.skip('#createDatabase()', function() {
+		it('should create a database', function() {
+			return CubedHost.Servers.createDatabase(1)
+				.then(function(res) {
+					expect(res).to.be.an('object');
+					expect(res.status).to.equal(200);
+					console.log(res.body);
+				});
+		});
+	});
+
+	describe.skip('#getDatabase()', function() {
 		it('should get null server database', function() {
 			return CubedHost.Servers.getDatabase(1)
 				.then(function(res) {
 					expect(res).to.be.an('object');
 					expect(res.status).to.equal(200);
 					expect(res.body).to.equal(null);
+				});
+		});
+	});
+
+	describe.skip('#deleteDatabase()', function() {
+		it('should create a database', function() {
+			return CubedHost.Servers.deleteDatabase(1)
+				.then(function(res) {
+					expect(res).to.be.an('object');
+					expect(res.status).to.equal(200);
+					console.log(res.body);
 				});
 		});
 	});
