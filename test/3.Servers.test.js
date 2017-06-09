@@ -259,4 +259,32 @@ describe('Servers', function() {
 		});
 	});
 
+	describe('#setType()', function() {
+		it('should properly fail to set server type', function() {
+			let type = {};
+
+			return CubedHost.Servers.setType(1, type)
+				.then(function(res) {
+					expect(res).to.be.an('object');
+					expect(res.status).to.equal(200);
+					expect(res.body.success).to.equal(false);
+				});
+		});
+
+		it('should set server type', function() {
+			let type = {
+				source: 'minecraft',
+				version: '1.12',
+				package: 'minecraft-release'
+			};
+
+			return CubedHost.Servers.setType(1, type)
+				.then(function(res) {
+					expect(res).to.be.an('object');
+					expect(res.status).to.equal(200);
+					expect(res.body.success).to.equal(true);
+				});
+		});
+	});
+
 });
