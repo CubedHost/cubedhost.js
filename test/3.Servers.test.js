@@ -3,6 +3,7 @@ const CubedHost = require('../');
 
 describe('Servers', function() {
 	this.timeout(5000);
+	let scheduleId;
 
 	describe('#all()', function() {
 		it('should get list of user servers', function() {
@@ -110,17 +111,6 @@ describe('Servers', function() {
 		});
 	});
 
-	describe('#getSchedules()', function() {
-		it('should return a list of schedules', function() {
-			return CubedHost.Servers.getSchedules(1)
-				.then(function(res) {
-					expect(res).to.be.an('object');
-					expect(res.status).to.equal(200);
-					expect(res.body).to.be.an('array');
-				});
-		});
-	});
-
 	describe('#getDatabase()', function() {
 		it('should get null server database', function() {
 			return CubedHost.Servers.getDatabase(1)
@@ -132,21 +122,60 @@ describe('Servers', function() {
 		});
 	});
 
-	describe.skip('#createSchedule()', function() {
+	describe('#createSchedule()', function() {
 		it('should create a new schedule', function() {
-			// TODO: write test
+			let task = {
+				'intervalUnit': '3600',
+				'customInterval': 1,
+				'command': 'start',
+				'status': '0',
+				'nextRunCustom': '2017-06-16 08:02:00',
+				'name': 'Test Task',
+				'scheduled_ts': 1497618120,
+				'interval': 3600
+			};
+
+			return CubedHost.Servers.createSchedule(1, task)
+				.then(function(res) {
+					expect(res).to.be.an('object');
+					expect(res.status).to.equal(200);
+					expect(res.body.success).to.equal(true);
+					expect(res.body.id[0]).to.be.a('number');
+					scheduleId = res.body.id[0];
+				});
 		});
 	});
 
-	describe.skip('#updateSchedule()', function() {
+	describe('#getSchedules()', function() {
+		it('should return a list of schedules', function() {
+			return CubedHost.Servers.getSchedules(1)
+				.then(function(res) {
+					expect(res).to.be.an('object');
+					expect(res.status).to.equal(200);
+					expect(res.body).to.be.an('array');
+				});
+		});
+	});
+
+	describe('#updateSchedule()', function() {
 		it('should update an existing schedule', function() {
-			// TODO: write test
+			return CubedHost.Servers.updateSchedule(1, scheduleId, {})
+				.then(function(res) {
+					expect(res).to.be.an('object');
+					expect(res.status).to.equal(200);
+					expect(res.body.success).to.equal(true);
+				});
 		});
 	});
 
-	describe.skip('#deleteSchedule()', function() {
+	describe('#deleteSchedule()', function() {
 		it('should delete an existing schedule', function() {
-			// TODO: write test
+			return CubedHost.Servers.deleteSchedule(1, scheduleId)
+				.then(function(res) {
+					expect(res).to.be.an('object');
+					expect(res.status).to.equal(200);
+					expect(res.body.success).to.equal(true);
+				});
 		});
 	});
 
