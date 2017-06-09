@@ -150,4 +150,38 @@ describe('Servers', function() {
 		});
 	});
 
+	describe('#getUsers()', function() {
+		it('should get server users', function() {
+			return CubedHost.Servers.getUsers(1)
+				.then(function(res) {
+					expect(res).to.be.an('object');
+					expect(res.status).to.equal(200);
+					expect(res.body).to.be.an('array');
+					expect(res.body[0]).to.have.property('id');
+					expect(res.body[0]).to.have.property('email');
+					expect(res.body[0]).to.have.property('role');
+				});
+		});
+	});
+
+	describe('#addUser()', function() {
+		it('should add server user', function() {
+			return CubedHost.Servers.addUser(1, 'test-user@cubedhost.com')
+				.then(function(res) {
+					expect(res).to.be.an('object');
+					expect(res.status).to.equal(200);
+				});
+		});
+	});
+
+	describe('#removeUser()', function() {
+		it('should remove server user', function() {
+			return CubedHost.Servers.removeUser(1, 'test-user@cubedhost.com')
+				.then(function(res) {
+					expect(res).to.be.an('object');
+					expect(res.status).to.equal(200);
+				});
+		});
+	});
+
 });
