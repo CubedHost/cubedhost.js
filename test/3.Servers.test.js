@@ -235,4 +235,28 @@ describe('Servers', function() {
 		});
 	});
 
+	describe('#getGameTypes()', function() {
+		it('should get server game types', function() {
+			return CubedHost.Servers.getGameTypes('minecraft')
+				.then(function(res) {
+					expect(res).to.be.an('object');
+					expect(res.status).to.equal(200);
+					expect(res.body).to.have.property('types').that.is.an('object');
+					expect(res.body.types).to.have.property('custom').that.is.an('array');
+					expect(res.body.types).to.have.property('atlauncher').that.is.an('array');
+					expect(res.body.types).to.have.property('bungeecord').that.is.an('array');
+					expect(res.body.types).to.have.property('craftbukkit').that.is.an('array');
+					expect(res.body.types).to.have.property('curse').that.is.an('array');
+					expect(res.body.types).to.have.property('forge').that.is.an('array');
+					expect(res.body.types).to.have.property('minecraft').that.is.an('array');
+					expect(res.body.types).to.have.property('paper').that.is.an('array');
+					expect(res.body.types).to.have.property('spigot').that.is.an('array');
+					expect(res.body.types).to.have.property('technic').that.is.an('array');
+					expect(res.body).to.have.property('sources').that.is.an('array');
+					expect(res.body.sources[0]).to.have.property('id');
+					expect(res.body.sources[0]).to.have.property('name');
+				});
+		});
+	});
+
 });
