@@ -30,4 +30,15 @@ describe('Tickets', function() {
 			});
 	});
 
+	describe('#reply()', function() {
+		it('should reply to ticket', function() {
+			return CubedHost.Tickets.reply(53, 'Automated test reply')
+				.then(function(res) {
+					expect(res).to.be.an('object');
+					expect(res.status).to.equal(200);
+					expect(res.body.success).to.equal(true);
+				});
+		});
+	});
+
 });
