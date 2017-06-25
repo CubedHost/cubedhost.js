@@ -1,6 +1,6 @@
 {
-  "name": "cubedhost.js",
-  "version": "0.0.1",
+  "name": "cubedhost",
+  "version": "0.0.2",
   "description": "Node.js client for the CubedHost Prisma API",
   "main": "index.js",
   "scripts": {
